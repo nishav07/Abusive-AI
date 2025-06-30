@@ -329,24 +329,23 @@
             background-color: transparent;
         }
 
-       @keyframes rotateFadeOut {
-  0% { transform: rotate(0deg); opacity: 1; }
-  100% { transform: rotate(90deg); opacity: 0; }
-}
+        @keyframes rotateFadeOut {
+            0% { transform: rotate(0deg); opacity: 1; }
+            100% { transform: rotate(90deg); opacity: 0; }
+        }
 
-@keyframes rotateFadeIn {
-  0% { transform: rotate(90deg); opacity: 0; }
-  100% { transform: rotate(180deg); opacity: 1; }
-}
+        @keyframes rotateFadeIn {
+            0% { transform: rotate(90deg); opacity: 0; }
+            100% { transform: rotate(180deg); opacity: 1; }
+        }
 
-/* Animation classes */
-.fade-out {
-  animation: rotateFadeOut 0.2s ease forwards;
-}
+        .fade-out {
+            animation: rotateFadeOut 0.2s ease forwards;
+        }
 
-.fade-in {
-  animation: rotateFadeIn 0.2s ease 0.2s forwards;
-}
+        .fade-in {
+            animation: rotateFadeIn 0.2s ease 0.2s forwards;
+        }
 
 
 
@@ -499,35 +498,33 @@
             chatBox.append(div);
             chatBox.scrollTop = chatBox.scrollHeight;
         }
-const toggleBtn = document.getElementById("theme-toggle");
-const root = document.documentElement;
 
-toggleBtn.addEventListener("click", () => {
-  const currentTheme = root.getAttribute("data-theme");
+            const toggleBtn = document.getElementById("theme-toggle");
+            const root = document.documentElement;
 
-  // Animate out
-  toggleBtn.classList.add("fade-out");
+            toggleBtn.addEventListener("click", () => {
+            const currentTheme = root.getAttribute("data-theme");
 
-  setTimeout(() => {
-    // Switch theme
-    if (currentTheme === "dark") {
-      root.setAttribute("data-theme", "light");
-      toggleBtn.classList.replace("fa-sun", "fa-moon");
-    } else {
-      root.setAttribute("data-theme", "dark");
-      toggleBtn.classList.replace("fa-moon", "fa-sun");
-    }
+            toggleBtn.classList.add("fade-out");
 
-    // Animate in
-    toggleBtn.classList.remove("fade-out");
-    toggleBtn.classList.add("fade-in");
-  }, 200);
+            setTimeout(() => {
+            if (currentTheme === "dark") {
+                root.setAttribute("data-theme", "light");
+                toggleBtn.classList.replace("fa-sun", "fa-moon");
+            } else {
+                root.setAttribute("data-theme", "dark");
+                toggleBtn.classList.replace("fa-moon", "fa-sun");
+            }
 
-  // Cleanup animation
-  setTimeout(() => {
-    toggleBtn.classList.remove("fade-in");
-  }, 400);
-});
+
+            toggleBtn.classList.remove("fade-out");
+            toggleBtn.classList.add("fade-in");
+            }, 200);
+
+            setTimeout(() => {
+            toggleBtn.classList.remove("fade-in");
+            }, 400);
+            });
 
 
 
