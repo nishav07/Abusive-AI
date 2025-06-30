@@ -1,0 +1,8 @@
+ <% (chatData.forEach(data => { %>
+                    <%    if (data.role === "user") {      %>
+                            <div class="msg-user" ><%= data.message %></div>
+                       <% } else { %>
+                            <div class="msg-ai"><%= data.message %></div>
+                        <% } %>
+                   <% })) %> 
+                   

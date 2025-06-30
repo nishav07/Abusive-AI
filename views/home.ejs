@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+
+        /* :root{
+            --lightBackground:#faedcd;
+            --backShadow:#fefae0;
+            --font:#00132d;
+            --secBackground:#e7c8a0;
+            --secBackshadow:#ede5ba;
+            --user:#ffe1a8;
+            --aicol:#f1d8aa;
+        } */
+
+        :root {
+        --lightBackground: #f4f4f9;      /* super light grey-blue */
+        --backShadow: #e6e6f0;           /* subtle shadow */
+        --font: #1e1e2f;                 /* deep charcoal (almost black) */
+        --secBackground: #dcdde1;        /* soft grey */
+        --secBackshadow: #c7c9d3;        /* shadowed grey */
+        --user: #a3d2ca;                 /* soft teal (user bubble) */
+        --aicol: #ffeaa7;                /* pale yellow (AI bubble) */
+        }
+
+
+        :root[data-theme="dark"] {
+  --lightBackground: #002029;     /* dark navy grey */
+  --backShadow: #00607a;          /* soft dark shadow */
+  --font: #DFD0B8;                /* soft off-white text */
+  --secBackground: #00303d;       /* secondary dark surface */
+  --secBackshadow:#005066;       /* slightly elevated section */
+  --user:  #023e8a;                 /* calm blue for user bubble */
+  --aicol:  #0077b6;            /* warm orange for AI bubble */
+}
+
+
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        a{
+            color: black;
+            text-decoration: none;
+        }
+
+        html{
+            height: 100%;
+        }
+
+        body{
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.2;
+            background-color: var(--lightBackground);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+
+       html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        #navbar {
+            width: 100%;
+            background-color:var(--lightBackground);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            }
+
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+            background-color: var(--backShadow);
+            border-radius: 1rem;
+        }
+
+        .nav-logo a {
+            font-size: 1.5rem;
+            font-weight: 700;
+            outline: none;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            color: var(--font);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 3rem;
+            list-style:none;
+            margin: 0;
+            padding: 0;
+            outline: none;
+            text-decoration: none;
+        }
+
+
+        .nav-menu li a{
+            color: var(--font);
+            outline: none;
+        }
+
+
+
+        main{
+            padding: 1.25rem;
+            height: calc(100vh - 70px);
+            color:var(--font);
+        }
+
+        .container{
+            max-width:1200px;
+            height: 100%;
+            margin: 0 auto;
+            padding:0 1.25rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .left-container{
+            min-width:12.5rem;
+            max-width: 25rem;
+            background-color: var(--secBackground);
+            flex: 1;
+            height: 100%;
+            border-radius: 1rem;
+        }
+        
+        .right-container{
+            display: flex;
+            flex-direction:column;
+            flex: 2;
+            background-color: var(--secBackground);
+            height: 100%;
+            border-radius: 1rem;
+        }
+
+        .inner-container{
+            padding: 1rem;
+            height: 100%;
+            /* background-color: rgb(202, 173, 229); */
+            display: flex;
+            align-items:flex-start;
+            /* justify-content:space-between; */
+            gap: 1rem;
+            flex-direction: column;
+        }
+
+        .inner-nav{
+            height: 3rem;
+            width: 100%;
+            display: flex;
+            align-items:center;
+            justify-content: space-between;
+        }
+
+        .inner-nav i{
+            font-size:1.8rem;
+            color: var(--font);
+        }
+
+        .inner-options{
+            height:8rem;
+            display: flex;
+            /* align-items: center; */
+            justify-content: center;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .chat-bar{
+            flex: 1;
+            overflow-y: scroll;
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 1rem;
+            padding-right: 0.5rem;
+        }
+
+        .chat-bar::-webkit-scrollbar{
+            width: 0.5rem;
+        }
+
+        .chats{
+            height: 3rem;
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--lightBackground);
+            border-radius: 0.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chats span{
+            font-size: 1.3rem;
+        }
+
+        .chats i{
+            font-size: 1.5rem;
+        }
+
+
+        .inner-container2{
+            padding: 1rem 3rem;
+            height: 100%;
+            background-color: var(--secBackground);
+            display: flex;
+            align-items:flex-start;
+            /* justify-content:space-between; */
+            gap: 1rem;
+            flex-direction: column;
+            border-radius: 1rem;
+        }
+
+        .nav-of-chat{
+            height: 3rem;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content:space-between;
+        }
+
+        .option-of-chat{
+            width: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .option-of-chat a{
+            color:var(--font);
+        }
+
+        .option-of-chat i{
+            font-size: 1.5rem;
+        }
+
+        .chat-area{
+            /* height: 100%; */
+            border-radius: 1rem;
+            flex: 2;
+            background-color: var(--lightBackground);
+            width: 100%;
+            display: flex;
+            /* align-items: center; */
+            /* justify-content:flex-end; */
+            flex-direction: column;
+            gap: 1rem;
+            overflow-y:scroll;
+            padding: 1rem;
+        }
+
+        .chat-area::-webkit-scrollbar{
+            width: 0.5rem;
+        }
+
+        .msg-user{
+            display: flex;
+            width: 60%;
+            padding: 1rem;
+            background-color:var(--user);
+            border-radius: 1rem;
+            align-self:flex-end;
+        }
+
+        .msg-ai{
+            display: flex;
+            width: 60%;
+            padding: 1rem;
+            background-color:var(--aicol);
+            border-radius: 1rem;
+            align-self:flex-start;
+        }
+
+        .input-area{
+            min-height:4rem;
+            max-height:10rem;
+            background-color: beige;
+            padding: 1rem;
+            width: 100%;
+            border-radius: 2rem;
+        }
+
+        #input-field{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #input-field button{
+            border: none;
+            outline: none;
+            font-size: 1.5rem;
+        }
+
+
+        #prompt{
+            resize: none;
+            height: auto;
+            min-height: 2rem;
+            max-height: 8rem;
+            overflow-y: auto;
+            width: 100%;
+            padding: 0.5rem;
+            outline: none;
+            border: none;
+            background-color: transparent;
+        }
+
+       @keyframes rotateFadeOut {
+  0% { transform: rotate(0deg); opacity: 1; }
+  100% { transform: rotate(90deg); opacity: 0; }
+}
+
+@keyframes rotateFadeIn {
+  0% { transform: rotate(90deg); opacity: 0; }
+  100% { transform: rotate(180deg); opacity: 1; }
+}
+
+/* Animation classes */
+.fade-out {
+  animation: rotateFadeOut 0.2s ease forwards;
+}
+
+.fade-in {
+  animation: rotateFadeIn 0.2s ease 0.2s forwards;
+}
+
+
+
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#">Abusive AI</a>
+            </div>
+
+                <ul class="nav-menu">
+                    <li><a href="#">Newchat</a></li>
+                    <li><a href="#">Login</a></li>
+                </ul>
+
+            <!-- <div class="humburger">
+                <span id="bar">New chat</span>
+                <span id="bar">Login</span>
+            </div> -->
+        </div>
+    </nav>
+
+
+    <main id="main">
+        <div class="container">
+           <div class="left-container">
+            <div class="inner-container">
+
+
+                <div class="inner-nav">
+                    <a href="#"><i class="fa-solid fa-user-doctor"></i></a>
+                    <i class="fa-regular fa-square-minus"></i>
+                </div>
+
+
+                <div class="inner-options">
+                    <div class="options">
+                        <i class="fa-brands fa-rocketchat"></i>
+                        <span>Newchat</span>
+                    </div>
+
+                    <div class="options">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <span>Search chat</span>
+                    </div>
+
+                    <div class="options">
+                        <i class="fa-solid fa-server"></i>
+                        <span>Newchat</span>
+                    </div>
+                </div>
+
+
+                <div class="chat-bar">
+                    <div class="chats">
+                        <span>Late night talk</span>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+
+                    <div class="chats">
+                        <span>Late night talk</span>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+
+                    <div class="chats">
+                        <span>Late night talk</span>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+
+                    <div class="chats">
+                        <span>Late night talk</span>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </div>
+            </div>
+           </div> 
+
+
+
+           <div class="right-container">
+            <div class="inner-container2">
+                <div class="nav-of-chat">
+                    <h1>logo</h1>
+
+                    <ul class="option-of-chat">
+                        <li><a href="#"><i class="fa-solid fa-arrow-up-from-bracket"></i></a></li>
+                        <li ><i id="theme-toggle" class="fa-solid fa-moon"></i></li>
+                        <li><a href="#"><i class="fa-solid fa-user"></i></a></li>
+                    </ul>
+                </div>
+
+                <div class="chat-area">
+                   
+                    
+
+                </div>
+
+                <div class="input-area">
+                    <form id="input-field">
+                        <textarea name="prompt" id="prompt" placeholder="Ask any shit"></textarea>
+                        <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+           </div>
+        </div>
+    </main>
+
+
+
+    <script>
+        let form = document.getElementById("input-field").addEventListener("submit", async function(e){
+        e.preventDefault();
+
+        let userInput = document.querySelector("#prompt").value;
+        userMsg(userInput);
+
+        const res = await fetch("/chat" , {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ msg: userInput })
+        })
+
+        const data = await res.json();
+        let aiReply = data.reply;
+        aiMsg(aiReply)
+        console.log(aiReply);
+        });
+
+
+        function userMsg(text) {
+            let chatBox = document.querySelector(".chat-area");
+            let div = document.createElement("div");
+            div.setAttribute("class" , "msg-user")
+            div.innerHTML = text;
+            chatBox.append(div);
+            document.querySelector("#prompt").value = "";
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function aiMsg(text) {
+            let chatBox = document.querySelector(".chat-area");
+            let div = document.createElement("div");
+            div.setAttribute("class" , "msg-ai")
+            div.innerHTML = text;
+            chatBox.append(div);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+const toggleBtn = document.getElementById("theme-toggle");
+const root = document.documentElement;
+
+toggleBtn.addEventListener("click", () => {
+  const currentTheme = root.getAttribute("data-theme");
+
+  // Animate out
+  toggleBtn.classList.add("fade-out");
+
+  setTimeout(() => {
+    // Switch theme
+    if (currentTheme === "dark") {
+      root.setAttribute("data-theme", "light");
+      toggleBtn.classList.replace("fa-sun", "fa-moon");
+    } else {
+      root.setAttribute("data-theme", "dark");
+      toggleBtn.classList.replace("fa-moon", "fa-sun");
+    }
+
+    // Animate in
+    toggleBtn.classList.remove("fade-out");
+    toggleBtn.classList.add("fade-in");
+  }, 200);
+
+  // Cleanup animation
+  setTimeout(() => {
+    toggleBtn.classList.remove("fade-in");
+  }, 400);
+});
+
+
+
+    </script>
+</body>
+</html>
