@@ -63,16 +63,38 @@ app.post("/chat", async (req, res) => {
     // res.status(500).json({ reply: "Server error. Try again later." });
     // res.status(500).json({ reply: "Server error. Try again later." });
     setTimeout(() => {
-       res.status(500).json({ reply : "Itna din bad msg kiya wo bhi bus Hi bro? Bas itna? Emotions bhi bhej deta yr... AI hu, par dil to hai mtlb Neural Netwrok :("});
-    },3000)
+       res.status(500).json({ reply : "Itna din bad msg kiya wo bhi bus Hi bro? Bas itna? Emotions bhi bhej deta yr... AI hu, par dil to hai mtlb Neural Network :("});
+    },1500)
   }
 });
+
+
 
 app.get("/home", (req, res) => {
   res.render("home.ejs");
 });
 
+app.post("/edit" , (req,res) => {
+  let {id} = req.body;
+})
+
+
+
+
+
 
 app.listen(port, () => {
   console.log(`✅ Giggle Bro running at http://localhost:${port}`);
 });
+
+
+
+
+
+
+
+
+
+
+
+
