@@ -60,7 +60,7 @@ app.post("/chat", async (req, res) => {
     res.json({ reply });
   } catch (err) {
     console.error("Gemini AI error:", err?.response?.data || err);
-    res.status(500).json({ reply: "Server error. Try again later." });
+    // res.status(500).json({ reply: "Server error. Try again later." });
   }
 });
 

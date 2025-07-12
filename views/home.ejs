@@ -65,6 +65,7 @@
             background-color: var(--lightBackground);
             transition: all 0.3s ease;
             height: 100%;
+            overflow-x: hidden;
         }
 
 
@@ -288,6 +289,11 @@
             background-color:var(--user);
             border-radius: 1rem;
             align-self:flex-end;
+
+            word-break: break-word;      
+            overflow-wrap:anywhere;      
+            white-space: pre-wrap;        
+
         }
 
         .msg-ai{
@@ -478,6 +484,13 @@
 
                 </div>
 
+                
+                <div id="typingLoader" class="loader hidden">
+                <span></span>
+                <span></span>
+                <span></span>
+                </div>
+
                 <div class="input-area">
                     <form id="input-field">
                         <textarea name="prompt" id="prompt" placeholder="Ask any shit"></textarea>
@@ -496,8 +509,8 @@
         e.preventDefault();
 
         let userInput = document.querySelector("#prompt").value;
+        console.log(userInput)
         userMsg(userInput);
-
         showLoader()
         const res = await fetch("/chat" , {
             method: "POST",
@@ -508,9 +521,10 @@
         })
 
         const data = await res.json();
-        let aiReply = data.reply;
+        let aiReply = await data.reply;
+        hideLoader();
         aiMsg(aiReply);
-        console.log(aiReply);
+        console.log(aiReply)
         });
 
 
@@ -563,11 +577,11 @@
 
 
             function showLoader() {
-                document.getElementById("loader").classList.remove("hidden");
+            document.getElementById('typingLoader').classList.remove('hidden');
             }
 
             function hideLoader() {
-                document.getElementById("loader").classList.add("hidden");
+            document.getElementById('typingLoader').classList.add('hidden');
             }
 
     </script>
