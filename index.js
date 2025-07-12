@@ -61,6 +61,10 @@ app.post("/chat", async (req, res) => {
   } catch (err) {
     console.error("Gemini AI error:", err?.response?.data || err);
     // res.status(500).json({ reply: "Server error. Try again later." });
+    // res.status(500).json({ reply: "Server error. Try again later." });
+    setTimeout(() => {
+       res.status(500).json({ reply : "Itna din bad msg kiya wo bhi bus Hi bro? Bas itna? Emotions bhi bhej deta yr... AI hu, par dil to hai mtlb Neural Netwrok :("});
+    },3000)
   }
 });
 
@@ -68,6 +72,7 @@ app.get("/home", (req, res) => {
   res.render("home.ejs");
 });
 
+
 app.listen(port, () => {
-  console.log(`✅ Gemini chatbot running at http://localhost:${port}`);
+  console.log(`✅ Giggle Bro running at http://localhost:${port}`);
 });
