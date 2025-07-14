@@ -14,7 +14,8 @@ INSERT INTO users (username, email, password_hash)
 VALUES 
     (@username, @email, @passwordHash);
 
-INSERT INTO chat_sessions (user_id, message, sender)
+INSERT INTO chat_sessions 
+(user_id, message, sender)
 VALUES 
     (@userId, @userMessage, 'user'),
     (@userId, @botReply, 'bot');

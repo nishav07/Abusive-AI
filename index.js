@@ -74,9 +74,6 @@ app.get("/home", (req, res) => {
   res.render("home.ejs");
 });
 
-app.post("/edit" , (req,res) => {
-  let {id} = req.body;
-})
 
 
 
