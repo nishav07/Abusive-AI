@@ -20,7 +20,12 @@ VALUES
     (@userId, @userMessage, 'user'),
     (@userId, @botReply, 'bot');
 
+CREATE TABLE users(
+    ID INT Auto_inc PRIMARY KEY,
+    name VARCHAR(30)
+);
 
+CREATE TABBLE
 
 
 
