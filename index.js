@@ -62,7 +62,7 @@ app.post("/chat", async (req, res) => {
     console.log(reply);
   } catch (err) {
     console.error("Gemini AI error:", err?.response?.data || err);
-    res.status(500).json({ reply: "Server error. Try again later." });
+    res.status(500).json({ reply: "Aaaaj mood nhi kar rha isko kal dekhta hu...aaj kya hai thoda reel scroll kr leta hu so isliye tu kal aana" });
     // res.status(500).json({ reply: "Server error. Try again later." });
     // setTimeout(() => {
     //    res.status(500).json({ reply : "Itna din bad msg kiya wo bhi bus Hi bro? Bas itna? Emotions bhi bhej deta yr... AI hu, par dil to hai mtlb Neural Network :("});
