@@ -11,6 +11,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 
 
+
 const chatData = [];
 
 app.post("/chat", async (req, res) => {
