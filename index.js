@@ -58,13 +58,14 @@ app.post("/chat", async (req, res) => {
     const reply = response.data.candidates?.[0]?.content?.parts?.[0]?.text || "No response.";
     chatData.push({ role: "model", content: reply });
     res.json({ reply });
+    console.log(reply);
   } catch (err) {
     console.error("Gemini AI error:", err?.response?.data || err);
+    res.status(500).json({ reply: "Server error. Try again later." });
     // res.status(500).json({ reply: "Server error. Try again later." });
-    // res.status(500).json({ reply: "Server error. Try again later." });
-    setTimeout(() => {
-       res.status(500).json({ reply : "Itna din bad msg kiya wo bhi bus Hi bro? Bas itna? Emotions bhi bhej deta yr... AI hu, par dil to hai mtlb Neural Network :("});
-    },1500)
+    // setTimeout(() => {
+    //    res.status(500).json({ reply : "Itna din bad msg kiya wo bhi bus Hi bro? Bas itna? Emotions bhi bhej deta yr... AI hu, par dil to hai mtlb Neural Network :("});
+    // },1500)
   }
 });
 
